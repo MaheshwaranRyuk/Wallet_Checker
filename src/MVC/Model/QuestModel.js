@@ -4,26 +4,34 @@ var resultSet;
 var mongoose = require("mongoose");
 const bitcoin = require('bitcoinjs-lib');
 
-
 async function saveQuest(request) {
   if (request != "" && typeof request !== "undefined") {
     try {
       const data = request.body;
       console.log(data);
       if (typeof data.address !== "undefined") {
-          // Regular expression for BTC Taproot Wallet Address validation 
+        // Regular expression for BTC Taproot Wallet Address validation 
         await TableQuest.find({
           address: data.address,
           // is_delete: false,
         }).then(
           (response) => {
-            resultSet = {
-              msg: "success",
-              list: response,
-              statusCode: 200,
-            };
+            if (response.length > 0) {
+              resultSet = {
+                msg: "whitelisted",
+                list: response,
+                statusCode: 200,
+              };
+            } else {
+              resultSet = {
+                msg: "not whitelisted",
+                list: [],
+                statusCode: 200,
+              };
+            }
           },
           (err) => {
+            console.log(err);
             resultSet = {
               msg: err.message,
               statusCode: 500,
@@ -34,7 +42,7 @@ async function saveQuest(request) {
         await TableQuest.find({ is_delete: false }).then(
           (response) => {
             resultSet = {
-              msg: "success",
+              msg: "whitelisted",
               list: response,
               statusCode: 200,
             };
@@ -64,7 +72,6 @@ async function saveQuest(request) {
     return resultSet;
   }
 }
-
 
 module.exports = {
   saveQuest
