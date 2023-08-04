@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var Controller = require("../../MVC/Controller/QuestController");
+var Controller = require("../../MVC/Controller/walletController");
 
 router.post("/", Controller.saveQuest);
 

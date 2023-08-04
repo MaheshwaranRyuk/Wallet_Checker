@@ -1,7 +1,4 @@
-var QuestModel = require("../Model/QuestModel");
-var jwt = require("jsonwebtoken");
-var Auth = require("../Helpers/Auth");
-var authorizer = require("../Helpers/Auth");
+var QuestModel = require("../Model/walletModel");
 
 
 const saveQuest = async (req, res, next) => {

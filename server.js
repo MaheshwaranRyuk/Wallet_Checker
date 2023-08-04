@@ -27,7 +27,7 @@ app.use(express.static('./src/uploads/'))
 
 app.use(SB_Routes);
 
-var PORT = 8000 || process.env.PORT;
+var PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Example app listening at localhost:${PORT}`);
 });

@@ -26,4 +26,4 @@ const QuestSchema = Schema({
   },
 });
 
-module.exports = Article = mongoose.model("quest", QuestSchema);
+module.exports = Article = mongoose.model("wallet", QuestSchema);
