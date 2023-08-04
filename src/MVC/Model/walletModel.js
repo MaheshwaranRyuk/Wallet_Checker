@@ -1,5 +1,4 @@
 var con = require("../../../database/connection");
-var con = require("../../../database/connection");
 const TableQuest = require("../Collections/walletCollection");
 
 async function saveQuest(request) {
